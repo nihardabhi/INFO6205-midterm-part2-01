@@ -152,11 +152,25 @@ public class MinPQ<Key> implements Iterable<Key> {
     ***************************************************************************/
 
     private void swim(int k) {
-        //STUDENT TODO
+        // while given number is remain greater than 1 and compare k/1 and k for given number and keep swap and swim up if comparison occur
+        while(k > 1 && greater(k/2, k)){
+            exch(k,k/2);
+            k /= 2;
+        }
     }
 
     private void sink(int k) {
-        //STUDENT TODO
+        while(2*k <= n){
+            int lci = 2*k;
+            if(lci<n && greater(lci, lci+1)){
+                lci++;
+            }
+
+            if(!greater(k, lci)) break;
+
+            exch(k, lci);
+            k = lci;
+        }
     }
 
    /***************************************************************************
